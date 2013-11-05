@@ -1,4 +1,4 @@
 picunit
 =======
 
-Unit Testing framewrok for PIC microcontrollers
+Unit Testing framework for PIC microcontrollers, for details please visit http://www.idea-on-line.it
