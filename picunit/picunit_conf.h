@@ -31,7 +31,7 @@
  * Configuration Options
  */
 #ifndef RUN_TESTS
-#define RUN_TESTS 1 //enable/disable testing compile and execution
+#define RUN_TESTS 0 //enable/disable testing compile and execution
 #endif
 
 #define PRINT_USART puts1USART  //select which usart will be used for debug

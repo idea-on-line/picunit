@@ -30,6 +30,7 @@
 #include "picunit_conf.h"
 
 #if RUN_TESTS
+#include <batchdebug.h>
 
 extern unsigned int tests_run, tests_failed;
 extern const char * (*picunit_tests[]) ();
