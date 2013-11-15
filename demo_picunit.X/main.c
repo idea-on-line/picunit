@@ -108,10 +108,6 @@ int main() {
        8);
 
     RUN_ALL_TESTS();
-
-    if (tests_failed > 0)
-        _FAILED_TEST();
-    _PASSED_TESTS();
 #endif
 
     while(1){

@@ -56,7 +56,10 @@ extern const char * (*picunit_tests[]) ();
                                 } \
                              } \
                              sprintf(str, "ALL TESTS %d, FAILED %d\n", tests_run, tests_failed); \
-                             PRINT_USART(str); } while (0)
+                             PRINT_USART(str); \
+                             if (tests_failed > 0) \
+                                    _FAILED_TEST(); \
+                             _PASSED_TESTS();} while (0)
 #else
 #define PICUNIT_INIT(x)
 #endif
