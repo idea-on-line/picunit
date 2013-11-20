@@ -36,8 +36,8 @@ int check_data_from_serial_protocol(int len);
 
 static unsigned char BUFFER[64];
 
-//WE HAVE 4 TOTAL TESTS
-PICUNIT_INIT(4)
+//WE HAVE MAX 4 TOTAL TESTS
+PICUNIT_INIT(6)
 
 /*
  * Test functions
@@ -86,17 +86,26 @@ static const char * test_check_data_from_serial_protocol_wrong(){
     picunit_assert("check_data_from_serial_protocol broken!", res==0);
     return 0;
 }
-#endif
 
-int main() {
+static void test_suite_1(){
+    // Assigning testing functions
+    picunit_tests[0] = test_foo;
+    picunit_tests[1] = test_check_data_from_serial_protocol;
 
-#if RUN_TESTS
+    RUN_UNITTESTS("Suite 1");
+}
+
+static void test_suite_2(){
     // Assigning testing functions
     picunit_tests[0] = test_foo;
     picunit_tests[1] = test_bar;
     picunit_tests[2] = test_check_data_from_serial_protocol;
     picunit_tests[3] = test_check_data_from_serial_protocol_wrong;
 
+    RUN_UNITTESTS("Suite 2");
+}
+
+static void run_all_tests(){
     // CONFIGURE UART FOR TESTS OUTPUT
     Open1USART(USART_TX_INT_OFF &
        USART_RX_INT_OFF &
@@ -107,7 +116,18 @@ int main() {
        USART_ADDEN_OFF,
        8);
 
-    RUN_ALL_TESTS();
+    test_suite_1();
+    test_suite_2();
+
+    END_TESTS();
+}
+
+#endif
+
+int main() {
+
+#if RUN_TESTS
+    run_all_tests();
 #endif
 
     while(1){
